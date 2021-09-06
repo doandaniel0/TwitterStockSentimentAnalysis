@@ -17,10 +17,10 @@ from nltk.stem import SnowballStemmer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from sklearn.feature_extraction.text import CountVectorizer
 
-consumerKey = '2jd75w7HaGEKwoycrL2zKXDHf'
-consumerSecret = '6jpESQocV3qr2p5sLxFkbPvYapErteGCeynxchDko6lAoZjAjV'
-accessToken = '1359505891725168644-D8ViQ7YgwTAJwmIgbbKIqL3x06Uz3v'
-accessTokenSecret = '95GdJO2ciHBllE34N6Sxm70w6UKa6DuSa69tUQpemPBxm'
+consumerKey = ''
+consumerSecret = ''
+accessToken = ''
+accessTokenSecret = ''
 auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth,wait_on_rate_limit=True)

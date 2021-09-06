@@ -24,10 +24,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 
-consumerKey = "OdRDxMbJIpm1o4w9WV8tlHzJU"
-consumerSecret = "pTvJ3417xQluotRIyr0X1xFckRr3Uk79iShMUWs2CSATEEItpf"
-accessToken = "1359505891725168644-I7qRQ8bxJo5ZigALOd0rg7WaxLym6p"
-accessTokenSecret = "ssk5WgMV99lyartDU9yMrVNKT98B4uewng56XF24Udqdt"
+consumerKey = ""
+consumerSecret = ""
+accessToken = ""
+accessTokenSecret = ""
 auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth)
