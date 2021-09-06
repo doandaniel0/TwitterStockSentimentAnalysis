@@ -41,15 +41,7 @@ negative = 0
 neutral = 0
 polarity = 0
 filename = 'file.txt'
-'''with open(filename, 'w') as f:
-    for tweet in tweets:
-        f.write(json.dumps(tweet._json) + '\n')
 
-tweet_list = []
-with open(filename) as f:
-    for line in f:
-        tweet_list.append(json.loads(line))
-'''
 
 
 with open(filename, 'w') as f:
