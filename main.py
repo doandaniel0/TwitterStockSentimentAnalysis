@@ -13,6 +13,7 @@ import nltk
 import pycountry
 import re
 import string
+import yfinance as yf
 from PIL import Image
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from langdetect import detect
@@ -32,9 +33,17 @@ auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth)
 
-search_term = input("Please enter stock keyword")
+search_term = input("Please enter a stock ticker")
 noOfTweet = int(input("Please enter how many tweets to analyze:"))
 
+
+yf_ticker = yf.Ticker(search_term)
+history = yf_ticker.history(period="max")
+plt.figure()
+plt.plot(history.Open)
+plt.xlabel('Date')
+plt.legend(['Price ($)'])
+plt.show()
 tweets = tweepy.Cursor(api.search, q=search_term, tweet_mode='extended').items(noOfTweet)
 positive = 0
 negative = 0
