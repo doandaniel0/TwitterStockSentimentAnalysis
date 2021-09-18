@@ -25,10 +25,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 
-consumerKey = ""
-consumerSecret = ""
-accessToken = ""
-accessTokenSecret = ""
+consumerKey = "QdVo0hZtsvdT8t1XLaonfwmP0"
+consumerSecret = "LT9oED4zW10avDNwpqenO2Q582m3SQqSEKqGgIkB4M4Q4Dtugm"
+accessToken = "1359505891725168644-tMehivzB36Q7IS1zesQqx9YUU3nI0n"
+accessTokenSecret = "rPfkXnV4tDmAPPEARCEE1ylXUMUSxFqkTShzx5ojQh8mD"
 auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth)
@@ -37,13 +37,7 @@ search_term = input("Please enter a stock ticker")
 noOfTweet = int(input("Please enter how many tweets to analyze:"))
 
 
-yf_ticker = yf.Ticker(search_term)
-history = yf_ticker.history(period="max")
-plt.figure()
-plt.plot(history.Open)
-plt.xlabel('Date')
-plt.legend(['Price ($)'])
-plt.show()
+
 tweets = tweepy.Cursor(api.search, q=search_term, tweet_mode='extended').items(noOfTweet)
 positive = 0
 negative = 0
@@ -94,6 +88,18 @@ elif polarity > 0.00:
     print("positive")
 elif polarity < 0.00:
     print("negative")
+
+plt.figure()
+#stock price plot
+yf_ticker = yf.Ticker(search_term)
+history = yf_ticker.history(period="max")
+plt.plot(history.Open)
+plt.xlabel('Date')
+plt.ylabel(['Price ($)'])
+plt.title(search_term + " stock price")
+
+#sentimemt plot
+plt.figure()
 labels = ['Positive [' + str(positive) + '%]', 'Neutral [' + str(neutral) + '%]', 'Negative [' + str(negative) + '%]']
 sizes = [positive, neutral, negative]
 colors = ['purple', 'blue', 'red']
@@ -101,6 +107,8 @@ patches, texts = plt.pie(sizes, colors=colors, startangle=90)
 plt.style.use('default')
 plt.legend(labels)
 plt.title("Sentiment Analysis Result for keyword=  " + search_term + "")
-plt.axis('equal')
+plt.axis('auto')
 plt.show()
+
+
 
