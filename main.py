@@ -71,7 +71,7 @@ with open(filename) as f:
 
 print(tweet_list)
 
-    # calcluating percentage of each sentiment based on amount of tweets
+# calcluating percentage of each sentiment based on amount of tweets
 def percentage(part, whole):
     return 100 * float(part) / float(whole)
 positive = percentage(positive, noOfTweet)
@@ -92,21 +92,21 @@ elif polarity < 0.00:
 plt.figure()
 #stock price plot
 yf_ticker = yf.Ticker(search_term)
-history = yf_ticker.history(period="max")
+history = yf_ticker.history(period="1wk")
 plt.plot(history.Open)
 plt.xlabel('Date')
 plt.ylabel(['Price ($)'])
-plt.title(search_term + " stock price")
+plt.title(search_term + " Stock Price")
 
 #sentimemt plot
 plt.figure()
 labels = ['Positive [' + str(positive) + '%]', 'Neutral [' + str(neutral) + '%]', 'Negative [' + str(negative) + '%]']
 sizes = [positive, neutral, negative]
-colors = ['purple', 'blue', 'red']
+colors = ['green', 'yellow', 'red']
 patches, texts = plt.pie(sizes, colors=colors, startangle=90)
 plt.style.use('default')
 plt.legend(labels)
-plt.title("Sentiment Analysis Result for keyword=  " + search_term + "")
+plt.title("Sentiment Analysis Result for: " + search_term + "")
 plt.axis('auto')
 plt.show()
 
